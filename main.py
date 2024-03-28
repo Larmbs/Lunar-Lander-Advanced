@@ -3,24 +3,24 @@ import sys
 
 import pygame as pg
 
-from config import Config
-from src.game import Game
+from config import CONFIG, AppConfig
+from game import Game
+
 
 BASE_PATH = os.getcwd()
 
-
 class App:
-    def __init__(self, WIDTH:int=1000, HEIGHT:int=600):
-        self.RES = WIDTH, HEIGHT
+    def __init__(self, config:AppConfig):
+        self.config = config
+        
+        self.RES = config.Window.SizeX, config.Window.SizeY
 
         pg.init()
 
         self.screen = pg.display.set_mode(self.RES)
         self.clock = pg.time.Clock()
 
-        self.tick_rate = 120
-
-        self.game = Game(WIDTH, HEIGHT, 1 / self.tick_rate)
+        self.game = Game(config, self.clock)
 
     def update(self):
         self.game.update()
@@ -37,7 +37,7 @@ class App:
             self.render()
             self.screen.blit(self.game.get_screen(), (0, 0))
 
-            self.clock.tick(self.tick_rate)
+            self.clock.tick(self.config.Window.FrameRate)
 
             pg.display.flip()
 
@@ -47,8 +47,7 @@ class App:
 
 
 def main():
-    config = Config()  # noqa: F841
-    app = App()
+    app = App(CONFIG)
     app.run()
 
 

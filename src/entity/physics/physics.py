@@ -1,5 +1,6 @@
 from numpy import sin, cos, arctan2
 from typing import Tuple
+import pymunk
 
 
 PI = 3.141

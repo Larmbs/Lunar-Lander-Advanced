@@ -43,13 +43,15 @@ class CircleSprite(Sprite):
         self.rotation_arrow(screen_pos, rot, surface)
         
             
-class Terrain(Sprite):
-    def __init__(self, color:ColorValue, heights:list[int], max_height:int, spacing:int):
+class TerrainSprite(Sprite):
+    def __init__(self, color:ColorValue, heights:list[int], max_height:int, spacing:int, thickness:int=1):
         self.color = color
         
         self.heights = heights
         self.max_height = max_height
         self.spacing = spacing
+        
+        self.thickness = thickness
         
         """Total Width Of Terrain"""
         self.width = len(heights) * spacing
@@ -85,11 +87,11 @@ class Terrain(Sprite):
         world_width = int(surface.get_width() / zoom)
         world_points = self.scrolled_points(self.get_points(), offset, world_width)
         points = self.transform_points(world_points, zoom, scroll, surface)
-        pg.draw.lines(surface, self.color, False, points)
+        pg.draw.lines(surface, self.color, False, points, self.thickness)
                 
         
-class Polygon(Sprite):
-    def __init__(self, color:ColorValue, points:list[Tuple[int, int]]) -> None:
+class PolygonSprite(Sprite):
+    def __init__(self, color:ColorValue, points:list[POINT]) -> None:
         self.color = color
         self.points = points
         self.surface = pg.Surface((200,200))

@@ -3,11 +3,15 @@
         "Title":"Lunar Lander",
         "DisplayFPS":true,
         "SizeX":800,
-        "SizeY":600
+        "SizeY":600,
+        "FrameRate":120
     },
     "Assets":{
         "Folder":"assets",
-        "Maps":"maps.txt",
-        "Polygons":"polygons.txt"
+        "Maps":"maps.json",
+        "Polygons":"polygons.json"
+    },
+    "Game":{
+        "Terrain_Thickness":2
     }
 }
