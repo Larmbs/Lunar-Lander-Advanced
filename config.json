@@ -1,0 +1,13 @@
+{
+    "Window":{
+        "Title":"Lunar Lander",
+        "DisplayFPS":true,
+        "SizeX":800,
+        "SizeY":600
+    },
+    "Assets":{
+        "Folder":"assets",
+        "Maps":"maps.txt",
+        "Polygons":"polygons.txt"
+    }
+}
